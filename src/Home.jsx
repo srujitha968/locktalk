@@ -35,7 +35,7 @@ function Home() {
     const ondataEncrypt = async(e) =>{
         e.preventDefault();
 
-        const res = await axios.post(`https://locktalk-spring.railway.internal/encrypt?msg=${msg}&password=${password}`)
+        const res = await axios.post(`https://locktalk-spring-production.up.railway.app/encrypt?msg=${msg}&password=${password}`)
         if(res.data=="Please fill the above 2 fields"){
             setMsg('')
             setPassword('')
@@ -52,7 +52,7 @@ function Home() {
     const onDatadecrypt = async(e) =>{
         e.preventDefault();
 
-        const res = await axios.post(`https://locktalk-spring.railway.internal/decrypt?secret=${secret}&password=${password}`)
+        const res = await axios.post(`https://locktalk-spring-production.up.railway.app/decrypt?secret=${secret}&password=${password}`)
         if(res.data=="Invalid details"){
             document.getElementById("result").innerHTML=res.data
             setPassword('')
