@@ -35,12 +35,13 @@ function Home() {
     const ondataEncrypt = async(e) =>{
         e.preventDefault();
 
-        const res = await axios.post(`http://localhost:8080/encrypt?msg=${msg}&password=${password}`)
+        const res = await axios.post(`http://locktalk-spring.railway.internal/encrypt?msg=${msg}&password=${password}`)
         if(res.data=="Please fill the above 2 fields"){
             setMsg('')
             setPassword('')
             document.getElementById('result').innerHTML="Please fill the above 2 fields"  
-        }else{
+        }
+        else{
             setSecret(res.data)
             setMsg('')
             setPassword('')
@@ -51,12 +52,13 @@ function Home() {
     const onDatadecrypt = async(e) =>{
         e.preventDefault();
 
-        const res = await axios.post(`http://localhost:8080/decrypt?secret=${secret}&password=${password}`)
+        const res = await axios.post(`http://locktalk-spring.railway.internal/decrypt?secret=${secret}&password=${password}`)
         if(res.data=="Invalid details"){
             document.getElementById("result").innerHTML=res.data
             setPassword('')
             setSecret('')
-        }else{
+        }
+        else{
             document.getElementById('result').innerHTML=""
             setMsg(res.data)
             setPassword('')
